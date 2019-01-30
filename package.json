@@ -1,0 +1,31 @@
+{
+	"name": "react-nextjs-pwa-demo",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "next",
+		"start": "next start",
+		"build": "next build",
+		"deploy": "now"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/aslihanozfidan/react-nextjs-pwa-demo.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/aslihanozfidan/react-nextjs-pwa-demo/issues"
+	},
+	"homepage": "https://github.com/aslihanozfidan/react-nextjs-pwa-demo#readme",
+	"dependencies": {
+		"@zeit/next-css": "^1.0.1",
+		"isomorphic-fetch": "^2.2.1",
+		"next": "^7.0.2",
+		"now": "^13.1.2",
+		"react": "^16.7.0",
+		"react-dom": "^16.7.0"
+	}
+}
