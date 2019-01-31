@@ -5,7 +5,7 @@
   "display": "standalone",
   "background_color": "#fff",
   "theme_color": "#fff",
-  "description": "A simply nextjs pwa app.",
+  "description": "A react PWA boilerplate with Next.js.",
   "icons": [{
     "src": "./static/images/touch/homescreen48.png",
     "sizes": "48x48",
