@@ -1,27 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Head from "next/head";
+import Head from "../components/head";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import "../styles/layout.scss";
+import "../styles/library.scss";
 
 export default class Layout extends React.Component {
+	
 	render() {
-		const { title, description, children, showBack } = this.props;
+		const { title, children } = this.props;
 
 		return (
-			<div>
-				<Head>
-					<title>{title}</title>
-					<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-					<meta name="theme-color" content="#ff6600" />
-					<link rel="apple-touch-icon" href="/static/icon.png" />
-					<meta name="apple-mobile-web-app-title" content="Hacker News" />
-					<meta name="apple-mobile-web-app-status-bar-style" content="default" />
-					<meta name="apple-mobile-web-app-capable" content="yes" />
-					<meta name="mobile-web-app-capable" content="yes" />
-				</Head>
+			<div className="main-layout">
+				<Head title={title}></Head>
 				<Header />
-				{children}
+				<section className="content">{children}</section>
 				<Footer />
 			</div>
 		);
