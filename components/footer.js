@@ -1,6 +1,4 @@
-import React from 'react'
-export default ({ children }) => (
-  <footer>
-    <p>Footer Test: { children }</p>
-  </footer>
-)
+import React from "react";
+import "../styles/footer.scss";
+
+export default ({ children }) => <footer>{children}</footer>;

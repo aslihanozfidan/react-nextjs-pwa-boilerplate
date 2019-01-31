@@ -1,0 +1,8 @@
+ul.news {
+  li {
+    &::before {
+      content: "- ";
+      font-weight: bold;
+    }
+  }
+}

@@ -7,10 +7,10 @@ export default class extends React.Component {
   }
   render() {
     return (
-      <Layout title="A page">
+      <Layout title="Main page" lang="en">
         <div>
-          <h2>A Header</h2>
-          <p>Some text for my page</p>
+          <h2 className="big-title">A Header</h2>
+          <p className="paragraph">Some text for my page</p>
         </div>
       </Layout>
     )

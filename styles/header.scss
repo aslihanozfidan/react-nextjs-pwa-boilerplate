@@ -1,0 +1,20 @@
+@import "./global.scss";
+
+header {
+	height: 60px;
+	line-height: 60px;
+
+	ul {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+	&::after {
+		content: "";
+		border-bottom: 1px solid $primary-color;
+		height: 1px;
+		width: 80%;
+		display: block;
+		margin: auto;
+	}
+}
