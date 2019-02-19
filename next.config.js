@@ -1,15 +1,22 @@
 const withSass = require("@zeit/next-sass");
 const NextWorkboxPlugin = require("next-workbox-webpack-plugin");
 const WebpackPwaManifest = require("webpack-pwa-manifest");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = withSass({
 	cssLoaderOptions: {
 		url: false,
-    importLoaders: 1,
+		importLoaders: 1,
 	},
 
-	webpack(config, { isServer, buildId, dev }) {
+	webpack(config, {
+		isServer,
+		buildId,
+		dev
+	}) {
 		// Fixes npm packages that depend on `fs` module
 		config.node = {
 			fs: "empty"
@@ -25,8 +32,7 @@ module.exports = withSass({
 			modifyUrlPrefix: {
 				".next": "/_next"
 			},
-			runtimeCaching: [
-				{
+			runtimeCaching: [{
 					urlPattern: new RegExp("/.*"),
 					handler: "networkFirst",
 					options: {
@@ -90,26 +96,68 @@ module.exports = withSass({
 						"apple-mobile-web-app-title": "Next-PWA",
 						"apple-mobile-web-app-status-bar-style": "#5755d9"
 					},
-					icons: [
-						{
-							src: path.resolve("static/favicon.ico"),
-							sizes: [
-								96,
-								128,
-								192,
-								256,
-								384,
-								512
-							],
-							destination: "/static"
-						}
-					],
+					icons: [{
+						src: path.resolve("static/favicon.ico"),
+						sizes: [
+							96,
+							128,
+							192,
+							256,
+							384,
+							512
+						],
+						destination: "/static"
+					}],
 					includeDirectory: true,
 					publicPath: ".."
-				})
+				}),
+				new OptimizeCssAssetsPlugin({
+					assetNameRegExp: /\.css$/g,
+					cssProcessorPluginOptions: {
+						preset: ['default', {
+							discardComments: {
+								removeAll: true
+							}
+						}],
+					},
+					canPrint: false
+				}),
+				new HtmlWebpackPlugin({
+					inject: false,
+					hash: true,
+					minify: true
+				}),
 			);
 		}
 
 		return config;
+	}
+}, {
+	optimization: {
+		minimizer: [
+			new UglifyJsPlugin({
+				uglifyOptions: {
+					ie8: true,
+					output: {
+						comments: false,
+						beautify: false
+					},
+					mangle: true,
+					sourcemap: false,
+					debug: false,
+					minimize: true,
+					compress: {
+						warnings: false,
+						screw_ie8: true,
+						conditionals: true,
+						unused: true,
+						comparisons: true,
+						sequences: true,
+						dead_code: true,
+						evaluate: true,
+					}
+				}
+			})
+		]
 	}
 });

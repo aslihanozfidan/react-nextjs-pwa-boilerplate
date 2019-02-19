@@ -2,7 +2,7 @@ const { join } = require('path');
 const express = require('express');
 const next = require('next');
 const cache = require('lru-cache'); // for using least-recently-used based caching
-
+const compression = require("compression");
 const PORT = 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -15,6 +15,7 @@ const ssrCache = new cache({
 
 app.prepare().then(() => {
   const server = express();
+  server.use(compression());
 
   server.get('/', (req, res) => {
     renderAndCache(req, res, '/');
