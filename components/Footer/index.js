@@ -1,4 +1,4 @@
 import React from "react";
-import "../styles/footer.scss";
+import "./index.scss";
 
 export default ({ children }) => <footer>{children}</footer>;

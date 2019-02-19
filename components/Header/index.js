@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import "../styles/header.scss";
+import "./index.scss";
 
 export default ({ children }) => (
 	<header>
@@ -19,6 +19,11 @@ export default ({ children }) => (
 			<li>
 				<Link href="/news">
 					<a title="News">News</a>
+				</Link>
+			</li>
+			<li>
+				<Link href="/gallery">
+					<a title="Gallery">Gallery</a>
 				</Link>
 			</li>
 		</ul>

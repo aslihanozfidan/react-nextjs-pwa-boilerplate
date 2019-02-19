@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
 import Layout from "../layouts/main"
-import "../styles/about.scss";
 
 export default class extends React.Component {
   constructor (props) {

@@ -1,7 +1,11 @@
 import React from "react";
 import "isomorphic-fetch";
+import dynamic from "next/dynamic";
 import Layout from "../layouts/main";
-import "../styles/news.scss";
+
+const List = dynamic({
+	loader: () => import("../components/List")
+});
 
 export default class extends React.Component {
 	static async getInitialProps() {
@@ -14,13 +18,7 @@ export default class extends React.Component {
 		return (
 			<Layout title="News">
 				<h2 className="big-title">Latest News</h2>
-				<ul className="news">
-					{this.props.stories.map((story, index) => (
-						<li key={`story-${index}`} className="paragraph">
-							<a href={story.url}>{story.title}</a>
-						</li>
-					))}
-				</ul>
+				<List stories={this.props.stories} />
 			</Layout>
 		);
 	}
