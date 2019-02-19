@@ -1,0 +1,8 @@
+ul.list-wrapper {
+  li {
+    &::before {
+      content: "- ";
+      font-weight: bold;
+    }
+  }
+}
