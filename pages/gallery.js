@@ -11,7 +11,17 @@ export default class extends React.Component {
 		return (
 			<Layout title="Gallery">
 				<h2 className="big-title">Gallery</h2>
-				<Image />
+				<div className="gallery-wrapper">
+					<Image />
+				</div>
+				<style jsx>{`
+					.gallery-wrapper {
+						display: flex;
+						justify-content: space-between;
+						align-items: self-start;
+						flex-wrap: wrap;
+					}
+				`}</style>
 			</Layout>
 		);
 	}
