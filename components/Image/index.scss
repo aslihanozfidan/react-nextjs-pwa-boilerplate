@@ -1,5 +1,8 @@
-img {
-  width: calc(50% - 20px);
-  height: auto;
-  margin: 10px;
+.image-wrapper {
+  img {
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    margin: 0 0 1em;
+  }
 }

@@ -1,10 +1,13 @@
 import React from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import "./index.scss";
 
-export default () => (
+export default (props) => (
 	<React.Fragment>
-		<img src={require("../../static/images/0.jpg")} alt="" />
-		<img src={require("../../static/images/1.jpg")} alt="" />
-		<img src={require("../../static/images/2.jpg")} alt="" />
+		{props.sources.map((item, index) => (
+			<div key={`image-${index}`} className="image-wrapper">
+				<LazyLoadImage src={item} effect={props.effect} />
+			</div>
+		))}
 	</React.Fragment>
 );
