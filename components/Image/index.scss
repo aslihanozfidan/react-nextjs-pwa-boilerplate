@@ -1,8 +1,10 @@
 .image-wrapper {
-  img {
-    width: 100%;
-    height: auto;
-    display: inline-block;
-    margin: 0 0 1em;
+  .lazy-load-image-background {
+    img {
+      width: 100%;
+      height: auto;
+      display: inline-block;
+      margin: 0 0 1em;
+    }
   }
 }
